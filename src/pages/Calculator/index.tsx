@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { View } from 'react-native';
 
 import Button from '../../components/Button';
@@ -28,36 +28,57 @@ export default function Home() {
   const onClearMemory = useCallback(() => setDisplay(defaultValuesDisplay), []);
 
   const onAddDigit = useCallback(
-    (digit: string): void => {
-      if (digit !== '.' && !display.displayValue.includes('.')) {
-        const clearDisplay = display.displayValue === '0' || display.clearDisplay;
+    (digit: string): any => {
+      const clearDisplay = display.displayValue === '0' || display.clearDisplay;
 
-        const currentValue = clearDisplay ? '' : display.displayValue;
-        const displayValue = currentValue + digit;
+      if (digit === '.' && !clearDisplay && display.displayValue.includes('.')) return;
 
-        if (digit !== '.') {
-          const values = [...display.values];
-          values[display.current] = parseFloat(displayValue);
-          setDisplay({ ...display, values, displayValue });
-        } else {
-          setDisplay({
-            ...display,
-            displayValue,
-          });
-        }
+      const currentValue = clearDisplay ? '' : display.displayValue;
+      const displayValue = currentValue + digit;
+
+      setDisplay({
+        ...display,
+        displayValue,
+      });
+
+      if (digit !== '.') {
+        const values = [...display.values];
+        values[display.current] = parseFloat(displayValue);
+        setDisplay({ ...display, values, displayValue, clearDisplay: false });
       }
     },
     [display],
   );
 
-  useEffect(() => console.log('display', display), [display]);
-
   const onSetOperation = useCallback(
     (operation: string) => {
-      setDisplay({
-        ...display,
-        operation,
-      });
+      if (display.current === 0) {
+        setDisplay({
+          ...display,
+          operation,
+          current: 1,
+          clearDisplay: true,
+        });
+      } else {
+        const equals = operation === '=';
+        const values = [...display.values];
+
+        try {
+          values[0] = eval(`${values[0]} ${display.operation} ${display.values[1]}`);
+        } catch (err) {
+          values[0] = display.values[0];
+        }
+
+        values[1] = 0;
+
+        setDisplay({
+          displayValue: values[0].toString(),
+          operation: equals ? null : operation,
+          current: equals ? 0 : 1,
+          clearDisplay: !equals,
+          values,
+        });
+      }
     },
     [display],
   );

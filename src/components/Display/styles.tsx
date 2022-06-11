@@ -5,7 +5,7 @@ export default StyleSheet.create({
     flex: 1,
     padding: 20,
     justifyContent: 'center',
-    backgroundColor: 'rgba(0,0,0,0.6)',
+    backgroundColor: '#6A6A6A',
     alignItems: 'flex-end',
   },
   displayValue: {
