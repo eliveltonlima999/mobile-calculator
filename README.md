@@ -10,7 +10,8 @@ yarn start
 
 Inicializar no android:
 ```
-yarn android```
+yarn android
+```
 
 Inicializar no ios:
 ```
