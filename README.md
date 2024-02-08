@@ -1,29 +1,27 @@
 # Calculadora
 Calculadora básica construída com React Native, TypeScript e Expo.
 
-### Inicializando
-
-Instalar bibliotecas:
+### Instalar bibliotecas:
 ```
 yarn
 ```
 
-Em desenvolvimento:
+### Inicializar em desenvolvimento:
 ```
 yarn start
 ```
 
-Inicializar no android:
+### Inicializar no android:
 ```
 yarn android
 ```
 
-Inicializar no ios:
+### Inicializar no ios:
 ```
 yarn ios
 ```
 
-## Formatação
+### Formatação
 A formatação e estilo de código foram feitos com Eslint e Prettier.
 
 ![Stacks](https://skillicons.dev/icons?i=react,ts,git,github&theme=dark)
