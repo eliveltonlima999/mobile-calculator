@@ -1,7 +1,7 @@
-### Calculadora
+# Calculadora
 Calculadora básica construída com React Native, TypeScript e Expo.
 
-## Inicializando
+### Inicializando
 
 Em desenvolvimento:
 ```
