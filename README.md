@@ -25,3 +25,5 @@ yarn ios
 
 ## Formatação
 A formatação e estilo de código foram feitos com Eslint e Prettier.
+
+[![Stacks](https://skillicons.dev/icons?i=react,ts,git,github&perline=3)](https://skillicons.dev)
